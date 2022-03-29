@@ -1,0 +1,11 @@
+# vars that you can overwrite on your main play
+---
+
+pakiti_push: false
+pakiti_add_cron: true
+site: "cert"
+pakiti_user: "pakiti"
+github_repository_version: "master"
+pakiti_cron_weekday: "*"
+pakiti_cron_minute: "00"
+pakiti_cron_hour: "5,15"
