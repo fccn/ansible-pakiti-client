@@ -1,0 +1,47 @@
+---
+
+- name: MESSAGE - Start Pakiti client installation task
+  debug: 
+    msg: "Starting pakiti agent installation ..."
+
+- name: Add user pakiti
+  user:
+    name: '{{ pakiti_user }}'
+    comment: John Doe pakiti
+
+- name: Install pakiti agent dependencies
+  yum:
+    name: ['perl-libwww-perl',
+           'perl-LWP-Protocol-https',
+           'perl-Crypt-SSLeay']
+    state: present
+  become: yes
+
+- name: Checkout the pakiti-client github repo
+  git:
+    repo: "{{ github_repository }}"
+    version: "{{ github_repository_version }}"
+    dest: "{{ pakiti_client_path }}"
+    force: yes
+    accept_hostkey: yes
+  changed_when: no
+  become: yes
+
+- name: Ensure that the permissions for /opt/pakiti-client are set properly
+  file:
+    path: "{{ pakiti_client_path }}"
+    state: directory
+    owner: "{{ pakiti_user }}"
+    group: "{{ pakiti_user }}"
+    mode: u=rwX,g=rX,o=rX
+    recurse: yes
+
+- name: Creates a cron job for pakiti
+  cron:
+    name: "pakiti-cronjob"
+    weekday: "{{ pakiti_cron_weekday }}"
+    minute: "{{ pakiti_cron_minute }}"
+    hour: "{{ pakiti_cron_hour }}"
+    user: "{{ pakiti_user }}"
+    job: "/usr/bin/perl /opt/pakiti-client/pakiti-client --site='{{ site }}' --url=\"https://{{ pakiti_server }}/feed/\""
+  when: pakiti_add_cron
