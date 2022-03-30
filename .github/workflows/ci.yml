@@ -8,12 +8,18 @@ on:
     branches:
     - master
 
+defaults:
+  run:
+    working-directory: 'fccn.ansible_pakiti_client'
+
 jobs:
   create-virtualenv:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+          path: 'fccn.ansible_pakiti_client'
 
     - name: Setup Python
       uses: actions/setup-python@v2
@@ -38,6 +44,8 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+          path: 'fccn.ansible_pakiti_client'
     
     - name: Setup Python
       uses: actions/setup-python@v2
@@ -68,6 +76,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        with:
+          path: 'fccn.ansible_pakiti_client'
 
       - name: Set up Python 3.
         uses: actions/setup-python@v2
