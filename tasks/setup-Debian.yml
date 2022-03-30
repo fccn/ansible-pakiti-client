@@ -2,6 +2,10 @@
 
 - name: Install pakiti agent dependencies for Debian based OS
   package:
-    name: libwww-perl
+    name:
+      # required to run perl
+      - libwww-perl
+      # required to install client from git repository
+      - git
   become: true
   tags: pakiti
