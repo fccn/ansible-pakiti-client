@@ -1,10 +1,9 @@
 ---
-
 - name: Install pakiti agent dependencies for RedHat based OS
   package:
-    name: 
+    name:
       - perl-libwww-perl
       - perl-LWP-Protocol-https
       - perl-Crypt-SSLeay
-  become: yes
+  become: true
   tags: pakiti

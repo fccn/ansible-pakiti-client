@@ -18,10 +18,10 @@
     repo: "{{ pakiti_repository }}"
     version: "{{ pakiti_repository_version }}"
     dest: "{{ pakiti_client_path }}"
-    force: yes
-    accept_hostkey: yes
-  changed_when: no
-  become: yes
+    force: true
+    accept_hostkey: true
+  changed_when: false
+  become: true
   tags: pakiti
 
 - name: Ensure that the permissions for /opt/pakiti-client are set properly
@@ -31,7 +31,7 @@
     owner: "{{ pakiti_user }}"
     group: "{{ pakiti_user }}"
     mode: u=rwX,g=rX,o=rX
-    recurse: yes
+    recurse: true
   tags: pakiti
 
 - name: Creates a cron job for pakiti

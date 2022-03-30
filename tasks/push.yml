@@ -1,6 +1,6 @@
 ---
 - name: Push data to pakiti server
-  become: yes
+  command: "{{ pakiti_exec }}"  # noqa no-changed-when
+  become: true
   become_user: '{{ pakiti_user }}'
-  shell: "{{ pakiti_exec }}"
   tags: pakiti

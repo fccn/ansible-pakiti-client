@@ -1,0 +1,7 @@
+---
+# This makes the linter display but not fail for rules/tags listed below:
+skip_list:
+  - fqcn-builtins
+
+# Offline mode disables installation of requirements.yml
+offline: false

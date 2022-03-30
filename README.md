@@ -46,3 +46,12 @@ Only ansible and a way to elevate privileges to sudo or root, so that the role c
 ```
 
 If you want to only run this role without any other role, you can add `--tags pakiti` to your command line.
+
+## Development
+Notes about on how to develop this role.
+
+Create a virtual environment and run the linters.
+```bash
+virtualenv venv --python=python3
+make lint
+```

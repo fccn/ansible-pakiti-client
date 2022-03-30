@@ -8,6 +8,8 @@
 
 - name: Verify presence of pakiti_site variable
   fail:
-    msg: You need to define 'pakiti_site' variable with a value that represents your team or service
+    msg: |
+      You need to define 'pakiti_site' variable with a value that
+      represents your team or service
   when: pakiti_site is not defined
   tags: pakiti
