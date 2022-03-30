@@ -50,10 +50,11 @@ If you want to only run this role without any other role, you can add `--tags pa
 ## Development
 Notes about on how to develop this role.
 
-Create a virtual environment and run the linters.
+Create a virtual environment, run the linters and tests
 ```bash
 virtualenv venv --python=python3
 . venv/bin/activate
 pip install -r requirements/dev.txt
 make lint
+molecule test
 ```

@@ -5,7 +5,7 @@ lint-yaml: ## lint yaml files
 .PHONY: lint-yaml
 
 lint-ansible: ## lint yaml files
-	ansible-lint -c .config/ansible-lint.yml
+	ansible-lint -c .ansible-lint
 .PHONY: lint-ansible
 
 lint: | lint-yaml lint-ansible
