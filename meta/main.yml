@@ -2,6 +2,7 @@
 galaxy_info:
   author: Ivo Branco and Pedro Silva
   description: Install the pakiti client
+  namespace: fccn
   company: FCT|FCCN
   issue_tracker_url: https://github.com/fccn/ansible_pakiti_client
   license: GPL-3.0-only

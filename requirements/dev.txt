@@ -1,2 +1,6 @@
-ansible-lint==6.0.2
-yamllint==1.26.3
+ansible-lint
+yamllint
+ansible
+molecule
+molecule[lint]
+molecule[docker]
