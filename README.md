@@ -53,5 +53,7 @@ Notes about on how to develop this role.
 Create a virtual environment and run the linters.
 ```bash
 virtualenv venv --python=python3
+. venv/bin/activate
+pip install -r requirements/dev.txt
 make lint
 ```
