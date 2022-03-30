@@ -1,8 +1,12 @@
 name: CI
 
 on:
-  pull_request:
   push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
 
 jobs:
   create-virtualenv:
@@ -60,7 +64,6 @@ jobs:
           - debian11
           - debian10
           - debian9
-          - fedora34
 
     steps:
       - name: Checkout
