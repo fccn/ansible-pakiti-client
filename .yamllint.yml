@@ -9,3 +9,4 @@ rules:
 ignore: |
   venv/**
   .github/**
+  molecule/default/converge.yml
