@@ -21,7 +21,8 @@
       failed_when: systemctl_status.rc > 1
 
   roles:
-    - role: fccn.ansible_pakiti_client  ## noqa internal-error
+    - role: fccn.ansible_pakiti_client
       vars:
         pakiti_server: example.com
         pakiti_site: my-team
+        pakiti_install_cron: false
