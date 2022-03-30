@@ -1,11 +1,43 @@
-# vars that you can overwrite on your main play
 ---
+# required vars:
 
+# pakiti server fdqn/dns
+#pakiti_server: example.com
+
+# to better identify to which team a server belongs to we have to use a sort of tag
+#pakiti_site: "my_team"
+
+# if role will install the pakiti software
+pakiti_install: true
+
+# if role will execute the pakiti software that sends information to the server
 pakiti_push: false
-pakiti_add_cron: true
-site: "cert"
-pakiti_user: "pakiti"
-github_repository_version: "master"
+
+# when we want to have a way to only push, we can skip the cronjob creation on the installation process
+pakiti_install_cron: true
+
+# the user that will be created on the server side and that will execute the pakiti client execution
+pakiti_user: pakiti
+
+# which git repository should be installed / cloned
+pakiti_repository: https://github.com/CESNET/pakiti-client.git
+
+# which client version should be installed, a branch or a tag of the git repository
+pakiti_repository_version: "v3.0.3"
+
+# Cron information
+# on the weekdays that you chose to execute the client, you have to choose minutes and hours that you want the execution to happen
+# by default run every day
 pakiti_cron_weekday: "*"
-pakiti_cron_minute: "00"
-pakiti_cron_hour: "5,15"
+# on a random hour and minute but idempotent for the host
+pakiti_cron_hour: "{{ 23|random(seed=inventory_hostname) }}"
+pakiti_cron_minute: "{{ 59|random(seed=inventory_hostname) }}"
+
+# where pakiti client should be installed
+pakiti_client_path: "/opt/pakiti-client"
+
+# URL that the client uses to send data
+pakiti_server_url: https://{{ pakiti_server }}/feed/
+
+# client script that will be executed and installed on the cron
+pakiti_exec: /usr/bin/perl {{ pakiti_client_path }}/pakiti-client --site="{{ pakiti_site }}" --url="{{ pakiti_server_url }}"

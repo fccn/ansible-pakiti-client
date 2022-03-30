@@ -1,0 +1,13 @@
+---
+
+- name: Verify presence of pakiti_server variable
+  fail:
+    msg: You need to define 'pakiti_server' variable
+  when: pakiti_server is not defined
+  tags: pakiti
+
+- name: Verify presence of pakiti_site variable
+  fail:
+    msg: You need to define 'pakiti_site' variable with a value that represents your team or service
+  when: pakiti_site is not defined
+  tags: pakiti

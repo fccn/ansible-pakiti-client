@@ -1,29 +1,28 @@
 ---
+- include_tasks: setup-RedHat.yml
+  when: ansible_os_family == 'RedHat'
+  tags: pakiti
 
-- name: MESSAGE - Start Pakiti client installation task
-  debug: 
-    msg: "Starting pakiti agent installation ..."
+- include_tasks: setup-Debian.yml
+  when: ansible_os_family == 'Debian'
+  tags: pakiti
 
 - name: Add user pakiti
   user:
     name: '{{ pakiti_user }}'
     comment: John Doe pakiti
+  tags: pakiti
 
-- name: Install pakiti agent dependencies
-  apt:
-    name: ['libwww-perl']
-    state: present
-  become: yes
-
-- name: Checkout the pakiti-client github repo
+- name: Checkout the pakiti-client repository
   git:
-    repo: "{{ github_repository }}"
-    version: "{{ github_repository_version }}"
+    repo: "{{ pakiti_repository }}"
+    version: "{{ pakiti_repository_version }}"
     dest: "{{ pakiti_client_path }}"
     force: yes
     accept_hostkey: yes
   changed_when: no
   become: yes
+  tags: pakiti
 
 - name: Ensure that the permissions for /opt/pakiti-client are set properly
   file:
@@ -33,6 +32,7 @@
     group: "{{ pakiti_user }}"
     mode: u=rwX,g=rX,o=rX
     recurse: yes
+  tags: pakiti
 
 - name: Creates a cron job for pakiti
   cron:
@@ -41,5 +41,6 @@
     minute: "{{ pakiti_cron_minute }}"
     hour: "{{ pakiti_cron_hour }}"
     user: "{{ pakiti_user }}"
-    job: "/usr/bin/perl /opt/pakiti-client/pakiti-client --site='{{ site }}' --url=\"https://{{ pakiti_server }}/feed/\""
-  when: pakiti_add_cron
+    job: "{{ pakiti_exec }}"
+  when: pakiti_install_cron
+  tags: pakiti
