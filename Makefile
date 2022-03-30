@@ -1,4 +1,4 @@
-# Makefile of ansible-pakiti-client role
+# Makefile of ansible_pakiti_client role
 
 lint-yaml: ## lint yaml files
 	yamllint -c .yamllint.yml .

@@ -1,4 +1,4 @@
-# ansible-pakiti-client
+# ansible_pakiti_client
 This role installs the pakiti client using Ansible. 
 It has three different modes that can be activated or disabled using optional variables:
 1. install the pakiti client
@@ -39,7 +39,7 @@ Only ansible and a way to elevate privileges to sudo or root, so that the role c
 ```jinja
 
     roles:
-        - role: ansible-pakiti-client
+        - role: ansible_pakiti_client
           vars: 
             pakiti_server: pakiti.example.com
             pakiti_site: my_team
