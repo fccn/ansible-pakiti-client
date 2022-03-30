@@ -32,6 +32,7 @@
     group: "{{ pakiti_user }}"
     mode: u=rwX,g=rX,o=rX
     recurse: true
+  changed_when: false
   tags: pakiti
 
 - name: Creates a cron job for pakiti
