@@ -1,10 +1,6 @@
 ---
-
-- name: Message
-  debug: 
-    msg: "I will only push data to pakiti server..."
-
-- name: Only push...
-  become: yes
+- name: Push data to pakiti server
+  command: "{{ pakiti_exec }}"  # noqa no-changed-when
+  become: true
   become_user: '{{ pakiti_user }}'
-  shell: /usr/bin/perl {{ pakiti_client_path }}/pakiti-client --site="{{ site }}" --url="https://{{ pakiti_server }}/feed/"
+  tags: pakiti

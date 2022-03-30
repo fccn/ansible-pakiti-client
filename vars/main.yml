@@ -1,6 +1,0 @@
-# vars that you cannot overwrite
-
----
-
-github_repository: "https://github.com/CESNET/pakiti-client.git"
-pakiti_client_path: "/opt/pakiti-client"

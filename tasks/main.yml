@@ -1,10 +1,11 @@
 ---
+- include_tasks: check-params.yml
+  tags: pakiti
 
-- include: centos.yml
-  when: ( ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux' ) and pakiti_push == False
-
-- include: ubuntu.yml
-  when: ( ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu' ) and pakiti_push == False
+- include_tasks: install.yml
+  when: pakiti_install
+  tags: pakiti
 
 - include: push.yml
-  when: pakiti_push == True
+  when: pakiti_push
+  tags: pakiti

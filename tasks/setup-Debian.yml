@@ -1,0 +1,7 @@
+---
+
+- name: Install pakiti agent dependencies for Debian based OS
+  package:
+    name: libwww-perl
+  become: true
+  tags: pakiti
