@@ -13,6 +13,17 @@
     comment: John Doe pakiti
   tags: pakiti
 
+- name: Ensure that the permissions for /opt/pakiti-client are set properly
+  file:
+    path: "{{ pakiti_client_path }}"
+    state: directory
+    owner: "{{ pakiti_user }}"
+    group: "{{ pakiti_user }}"
+    mode: u=rwX,g=rX,o=rX
+    recurse: true
+  changed_when: false
+  tags: pakiti
+
 - name: Checkout the pakiti-client repository
   git:
     repo: "{{ pakiti_repository }}"
@@ -21,7 +32,9 @@
     force: true
     accept_hostkey: true
   changed_when: false
+  when: not ansible_check_mode
   become: true
+  become_user: "{{ pakiti_user }}"
   tags: pakiti
 
 - name: Ensure that the permissions for /opt/pakiti-client are set properly
