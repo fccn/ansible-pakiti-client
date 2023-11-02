@@ -2,6 +2,10 @@
 - include_tasks: check-params.yml
   tags: pakiti
 
+- include_tasks: uninstall.yml
+  when: pakiti_uninstall
+  tags: pakiti
+
 - include_tasks: install.yml
   when: pakiti_install
   tags: pakiti

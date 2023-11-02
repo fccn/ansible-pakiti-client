@@ -5,6 +5,9 @@ pakiti_install: true
 # if role will execute the pakiti software that sends information to the server
 pakiti_push: false
 
+# flags to indicate to uninstall
+pakiti_uninstall: false
+
 # when we want to have a way to only push, we can skip the cronjob creation on
 # the installation process
 pakiti_install_cron: true

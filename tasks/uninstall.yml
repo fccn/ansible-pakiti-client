@@ -1,0 +1,7 @@
+---
+- name: Delete previous pakiti folder
+  file:
+    path: "{{ pakiti_client_path }}"
+    state: absent
+  when: pakiti_uninstall
+  tags: pakiti
