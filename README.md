@@ -31,6 +31,7 @@ The optional variables are defined on the [defaults/main.yml](defaults/main.yml)
 1. `github_repository` - git repository link that has the client installation data
 1. `pakiti_server_url` - URL that the client uses to send data
 1. `pakiti_exec` - client script that will be executed
+1. `pakiti_uninstall` - to uninstall pakiti (simply deletes the pakiti folder)
 
 ## Dependencies
 Only ansible and a way to elevate privileges to sudo or root, so that the role can install OS dependencies and create the user that will execute the client.
