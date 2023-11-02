@@ -3,5 +3,5 @@
   file:
     path: "{{ pakiti_client_path }}"
     state: absent
-  when: pakiti_uninstall
+  when: pakiti_uninstall | bool
   tags: pakiti
