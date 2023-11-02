@@ -21,10 +21,10 @@ jobs:
       with:
           path: 'fccn.ansible_pakiti_client'
 
-    - name: Setup Python
-      uses: actions/setup-python@v2
+    - name: Setup Python 3.8
+      uses: actions/setup-python@v4
       with:
-        python-version: '3.x'
+        python-version: '3.8'
     
     - name: Restore virtualenv
       uses: syphar/restore-virtualenv@v1
@@ -47,10 +47,10 @@ jobs:
       with:
           path: 'fccn.ansible_pakiti_client'
     
-    - name: Setup Python
-      uses: actions/setup-python@v2
+    - name: Setup Python 3.8
+      uses: actions/setup-python@v4
       with:
-        python-version: '3.x'
+        python-version: '3.8'
     
     - name: Restore virtualenv
       uses: syphar/restore-virtualenv@v1
@@ -79,10 +79,10 @@ jobs:
         with:
           path: 'fccn.ansible_pakiti_client'
 
-      - name: Set up Python 3.
-        uses: actions/setup-python@v2
+      - name: Setup Python 3.8
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.x'
+          python-version: '3.8'
 
       - name: Restore virtual environment
         uses: syphar/restore-virtualenv@v1
