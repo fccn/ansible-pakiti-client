@@ -1,6 +1,7 @@
 ---
-- name: Push data to pakiti server
-  command: "{{ pakiti_exec }}"  # noqa no-changed-when
+- name: Push data to pakiti server  # noqa no-changed-when
+  command: "{{ pakiti_exec }}"
   become: true
   become_user: '{{ pakiti_user }}'
+  changed_when: true
   tags: pakiti

@@ -13,5 +13,10 @@ platforms:
     pre_build_image: true
 provisioner:
   name: ansible
+  log: true
   playbooks:
     converge: ${MOLECULE_PLAYBOOK:-converge.yml}
+# lint:
+#   name: yamllint
+#   options:
+#     config-file: .yamllint.yml
