@@ -3,3 +3,6 @@ ansible-lint==4.1.0
 yamllint==1.26.3
 markupsafe==2.0.1
 molecule-docker==1.1.0
+
+# temp: https://github.com/docker/docker-py/issues/3256
+requests < 2.32.0
