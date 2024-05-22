@@ -4,4 +4,8 @@
   become: true
   become_user: '{{ pakiti_user }}'
   changed_when: true
+  retries: "{{ pakiti_push_retries | default(3) }}"
+  delay: "{{ pakiti_push_delay | default(3) }}"
+  register: pakiti_push_result
+  until: pakiti_push_result.rc == 0
   tags: pakiti
